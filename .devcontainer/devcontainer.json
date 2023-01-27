@@ -3,16 +3,18 @@
 	"dockerFile": "Dockerfile",
 	"build": {
 		"args": {
-			"WORKSPACE": "${containerWorkspaceFolder}"
+			"WORKSPACE": "${containerWorkspaceFolder}",
+			"USER": "humble",
+			"PASS": "ros"
 		}
 	},
-	"remoteUser": "ros",
 	"runArgs": [
+		"--env=QT_X11_NO_MITSHM=1",
 		"--network=host",
-		"--cap-add=SYS_PTRACE",
-		"--security-opt=seccomp:unconfined",
-		"--security-opt=apparmor:unconfined",
-		"--volume=/tmp/.X11-unix:/tmp/.X11-unix"
+		"--privileged",
+		// "--cap-add=SYS_PTRACE",
+		"--volume=/tmp/.X11-unix:/tmp/.X11-unix",
+		"--runtime=nvidia"
 	],
 	"containerEnv": {
 		"DISPLAY": "${localEnv:DISPLAY}",
@@ -28,16 +30,16 @@
 		"terminal.integrated.defaultProfile.linux": "bash"
 	},
 	"extensions": [
-		"althack.ament-task-provider",
-		"DotJoshJohnson.xml",
-		"ms-azuretools.vscode-docker",
+		// "althack.ament-task-provider",
+		// "DotJoshJohnson.xml",
+		// "ms-azuretools.vscode-docker",
 		"ms-python.python",
-		"ms-vscode.cpptools",
-		"redhat.vscode-yaml",
-		"smilerobotics.urdf",
-		"streetsidesoftware.code-spell-checker",
-		"twxs.cmake",
-		"yzhang.markdown-all-in-one",
-		"zachflower.uncrustify"
+		"ms-vscode.cpptools"
+		// "redhat.vscode-yaml",
+		// "smilerobotics.urdf",
+		// "streetsidesoftware.code-spell-checker",
+		// "twxs.cmake",
+		// "yzhang.markdown-all-in-one",
+		// "zachflower.uncrustify"
 	]
 }
