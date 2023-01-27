@@ -1,4 +1,4 @@
-FROM abdulmelik/mucithane:v-1
+FROM osrf/ros:humble-desktop-full
 
 # nvidia-container-runtime
 ENV NVIDIA_VISIBLE_DEVICES \
@@ -7,11 +7,11 @@ ENV NVIDIA_DRIVER_CAPABILITIES \
         ${NVIDIA_DRIVER_CAPABILITIES:+$NVIDIA_DRIVER_CAPABILITIES,}graphics
 
 # Create the user
-# ARG USER
-# ARG PASS
-# RUN useradd -m $USER && echo "$USER:$PASS" | chpasswd && adduser $USER sudo
+ARG USER
+ARG PASS
+RUN useradd -m $USER && echo "$USER:$PASS" | chpasswd && adduser $USER sudo
 
-# USER $USER
+USER $USER
 
 # ** [Optional] Uncomment this section to install additional packages. **
 #
