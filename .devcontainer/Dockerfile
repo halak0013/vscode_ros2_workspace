@@ -26,6 +26,6 @@ USER $USER
 # ENV DEBIAN_FRONTEND=dialog
 
 # Set up auto-source of workspace for ros user
-# ARG WORKSPACE
-# RUN echo "if [ -f ${WORKSPACE}/install/setup.bash ]; then source ${WORKSPACE}/install/setup.bash; fi" >> /home/${USER}/.bashrc
-# RUN echo "source /opt/ros/humble/setup.bash" >> /home/${USER}/.bashrc
+ARG WORKSPACE
+RUN echo "source /opt/ros/humble/setup.bash" >> /home/${USER}/.bashrc
+RUN echo "if [ -f ${WORKSPACE}/install/setup.bash ]; then source ${WORKSPACE}/install/setup.bash; fi" >> /home/${USER}/.bashrc
