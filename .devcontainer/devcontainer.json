@@ -15,6 +15,7 @@
 		"--privileged",
 		// "--cap-add=SYS_PTRACE",
 		"--volume=/tmp/.X11-unix:/tmp/.X11-unix",
+		"--volume=/dev/shm:/dev/shm", // for ros2 communication
 		"--runtime=nvidia"
 	],
 	"containerEnv": {
@@ -29,7 +30,9 @@
 				// "DotJoshJohnson.xml",
 				// "ms-azuretools.vscode-docker",
 				"ms-python.python",
-				"ms-vscode.cpptools"
+				"ms-vscode.cpptools",
+				"twxs.cmake",
+				"rust-lang.rust-analyzer"
 				// "redhat.vscode-yaml",
 				// "smilerobotics.urdf",
 				// "streetsidesoftware.code-spell-checker",
